@@ -10,27 +10,27 @@ export default async function SettingsPage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: profile } = await supabase
+  const { data: profile } = (await supabase
     .from("users")
     .select("*")
     .eq("id", user.id)
-    .single();
+    .single()) as any;
 
-  const { data: categories } = await supabase
+  const { data: categories } = (await supabase
     .from("categories")
     .select("*")
-    .order("name");
+    .order("name")) as any;
 
-  const { data: interests } = await supabase
+  const { data: interests } = (await supabase
     .from("user_interests")
     .select("category_id")
-    .eq("user_id", user.id);
+    .eq("user_id", user.id)) as any;
 
   return (
     <SettingsClient
       profile={profile}
       categories={categories ?? []}
-      currentInterests={interests?.map((i) => i.category_id) ?? []}
+      currentInterests={interests?.map((i: any) => i.category_id) ?? []}
     />
   );
 }

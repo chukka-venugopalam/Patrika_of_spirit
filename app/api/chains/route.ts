@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
 
   if (chainId) {
     // Get full chain tree using the recursive function
-    const { data, error } = await supabase.rpc("get_chain_tree", { root_chain_id: chainId });
+    const { data, error } = await (supabase as any).rpc("get_chain_tree", { root_chain_id: chainId });
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
     return NextResponse.json({ data });
   }
@@ -51,19 +51,18 @@ export async function POST(request: NextRequest) {
 
     let depth = 1;
     if (parent_chain_id) {
-      const { data: parent } = await supabase
+      const { data: parent } = (await supabase
         .from("awareness_chains")
         .select("depth")
         .eq("id", parent_chain_id)
-        .single();
+        .single()) as any;
       if (parent) depth = parent.depth + 1;
     }
 
-    const { data, error } = await supabase
-      .from("awareness_chains")
+    const { data, error } = (await (supabase.from("awareness_chains") as any)
       .insert({ post_id, root_user_id: user.id, parent_chain_id: parent_chain_id ?? null, depth })
       .select()
-      .single();
+      .single()) as any;
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 

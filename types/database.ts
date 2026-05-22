@@ -51,7 +51,8 @@ export interface Database {
           onboarding_completed?: boolean;
           updated_at?: string;
         };
-      };
+        Relationships: [];
+        };
       categories: {
         Row: {
           id: string;
@@ -81,7 +82,8 @@ export interface Database {
           color?: string;
           post_count?: number;
         };
-      };
+        Relationships: [];
+        };
       awareness_posts: {
         Row: {
           id: string;
@@ -158,7 +160,8 @@ export interface Database {
           published_at?: string | null;
           updated_at?: string;
         };
-      };
+        Relationships: [];
+        };
       awareness_chains: {
         Row: {
           id: string;
@@ -184,7 +187,8 @@ export interface Database {
           depth?: number;
           total_reach?: number;
         };
-      };
+        Relationships: [];
+        };
       shares: {
         Row: {
           id: string;
@@ -203,7 +207,8 @@ export interface Database {
           created_at?: string;
         };
         Update: Record<string, never>;
-      };
+        Relationships: [];
+        };
       user_interests: {
         Row: {
           id: string;
@@ -218,7 +223,8 @@ export interface Database {
           created_at?: string;
         };
         Update: Record<string, never>;
-      };
+        Relationships: [];
+        };
       badges: {
         Row: {
           id: string;
@@ -241,7 +247,8 @@ export interface Database {
           created_at?: string;
         };
         Update: Record<string, never>;
-      };
+        Relationships: [];
+        };
       user_badges: {
         Row: {
           id: string;
@@ -256,7 +263,8 @@ export interface Database {
           earned_at?: string;
         };
         Update: Record<string, never>;
-      };
+        Relationships: [];
+        };
       comments: {
         Row: {
           id: string;
@@ -283,7 +291,8 @@ export interface Database {
           like_count?: number;
           updated_at?: string;
         };
-      };
+        Relationships: [];
+        };
       likes: {
         Row: {
           id: string;
@@ -298,7 +307,8 @@ export interface Database {
           created_at?: string;
         };
         Update: Record<string, never>;
-      };
+        Relationships: [];
+        };
     };
     Views: Record<string, never>;
     Functions: {

@@ -45,12 +45,11 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ error: "No valid fields to update" }, { status: 400 });
   }
 
-  const { data, error } = await supabase
-    .from("users")
+  const { data, error } = (await (supabase.from("users") as any)
     .update({ ...update, updated_at: new Date().toISOString() })
     .eq("id", user.id)
     .select()
-    .single();
+    .single()) as any;
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ data });

@@ -10,11 +10,11 @@ interface ProfilePageProps {
 export async function generateMetadata({ params }: ProfilePageProps): Promise<Metadata> {
   const { username } = await params;
   const supabase = await createClient();
-  const { data: profile } = await supabase
+  const { data: profile } = (await supabase
     .from("users")
     .select("full_name, bio")
     .eq("username", username)
-    .single();
+    .single()) as any;
   if (!profile) return { title: "User Not Found" };
   return {
     title: profile.full_name ?? username,
@@ -26,32 +26,32 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   const { username } = await params;
   const supabase = await createClient();
 
-  const { data: profile } = await supabase
+  const { data: profile } = (await supabase
     .from("users")
     .select("*")
     .eq("username", username)
-    .single();
+    .single()) as any;
 
   if (!profile) notFound();
 
   const { data: { user: currentUser } } = await supabase.auth.getUser();
 
-  const { data: interests } = await supabase
+  const { data: interests } = (await supabase
     .from("user_interests")
     .select("*, categories(*)")
-    .eq("user_id", profile.id);
+    .eq("user_id", profile.id)) as any;
 
-  const { data: userBadges } = await supabase
+  const { data: userBadges } = (await supabase
     .from("user_badges")
     .select("*, badges(*)")
-    .eq("user_id", profile.id);
+    .eq("user_id", profile.id)) as any;
 
-  const { data: recentChains } = await supabase
+  const { data: recentChains } = (await supabase
     .from("awareness_chains")
     .select("*, awareness_posts(title, slug)")
     .eq("root_user_id", profile.id)
     .order("created_at", { ascending: false })
-    .limit(5);
+    .limit(5)) as any;
 
   return (
     <ProfileClient

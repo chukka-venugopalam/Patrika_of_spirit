@@ -16,12 +16,14 @@ interface ArticlePageProps {
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
   const supabase = await createClient();
-  const { data: post } = await supabase
+  const { data } = await supabase
     .from("awareness_posts")
     .select("*, categories(*)")
     .eq("slug", slug)
     .eq("status", "published")
     .single();
+
+  const post = data as any;
 
   if (!post) return { title: "Post Not Found" };
 
@@ -47,12 +49,14 @@ export default async function AwarenessArticlePage({ params }: ArticlePageProps)
   const { slug } = await params;
   const supabase = await createClient();
 
-  const { data: post } = await supabase
+  const { data } = await supabase
     .from("awareness_posts")
     .select("*, categories(*), users(id, username, avatar_url, full_name)")
     .eq("slug", slug)
     .eq("status", "published")
     .single();
+
+  const post = data as any;
 
   if (!post) notFound();
 

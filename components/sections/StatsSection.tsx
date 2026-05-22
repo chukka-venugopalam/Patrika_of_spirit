@@ -32,7 +32,7 @@ export function StatsSection() {
           </span>
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white">
             Numbers That
-            <span className="gradient-text"> Can't Be Ignored</span>
+            <span className="gradient-text"> Can&apos;t Be Ignored</span>
           </h2>
         </motion.div>
 

@@ -11,13 +11,15 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: profile } = await supabase
+  const { data: profileData } = await supabase
     .from("users")
     .select("*")
     .eq("id", user.id)
     .single();
 
-  const { data: featuredPost } = await supabase
+  const profile = profileData as any;
+
+  const { data: featuredPostData } = await supabase
     .from("awareness_posts")
     .select("*, categories(*), users(id, username, avatar_url, full_name)")
     .eq("status", "published")
@@ -26,12 +28,16 @@ export default async function DashboardPage() {
     .limit(1)
     .single();
 
-  const { data: trendingPosts } = await supabase
+  const featuredPost = featuredPostData as any;
+
+  const { data: trendingPostsData } = await supabase
     .from("awareness_posts")
     .select("*, categories(*), users(id, username, avatar_url, full_name)")
     .eq("status", "published")
     .order("view_count", { ascending: false })
     .limit(9);
+
+  const trendingPosts = trendingPostsData as any;
 
   return (
     <div className="min-h-screen bg-void-950">

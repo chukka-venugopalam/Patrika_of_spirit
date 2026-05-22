@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import Link from "next/link";
+import { Zap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -23,9 +24,7 @@ export default function LoginPage() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 mb-10">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center glow-cyan">
-            <svg className="w-5 h-5 text-void-950" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M13 2L3 14h7l-1 8L21 10h-7l0-8z" />
-            </svg>
+            <Zap className="w-5 h-5 text-void-950" fill="currentColor" />
           </div>
           <span className="font-display font-bold text-2xl gradient-text-cyan">AwareNet</span>
         </Link>

@@ -13,16 +13,18 @@ export default async function ChainPage({ params }: ChainPageProps) {
   const { chainId } = await params;
   const supabase = await createClient();
 
-  const { data: chain } = await supabase
+  const { data: chainData } = await supabase
     .from("awareness_chains")
     .select("*, awareness_posts(title, slug, categories(name, color))")
     .eq("id", chainId)
     .single();
 
+  const chain = chainData as any;
+
   if (!chain) notFound();
 
   // Get the full chain tree
-  const { data: treeNodes } = await supabase.rpc("get_chain_tree", {
+  const { data: treeNodes } = await (supabase as any).rpc("get_chain_tree", {
     root_chain_id: chainId,
   });
 
