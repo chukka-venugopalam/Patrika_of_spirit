@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 export function ReadingProgressBar() {
@@ -12,7 +11,7 @@ export function ReadingProgressBar() {
       className="fixed top-0 left-0 right-0 z-[60] h-0.5 origin-left"
       style={{
         scaleX,
-        background: "linear-gradient(90deg, #00f5ff, #b400ff, #00ff88)",
+        background: "linear-gradient(90deg, #bcecff, #d9d2ff, #d4f4e5)",
       }}
     />
   );

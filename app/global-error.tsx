@@ -17,7 +17,7 @@ export default function GlobalError({
 
   return (
     <html>
-      <body className="min-h-screen bg-[#03050a] flex items-center justify-center px-4 text-center">
+      <body className="min-h-screen bg-background flex items-center justify-center px-4 text-center">
         <div className="space-y-6 max-w-md">
           <div className="w-16 h-16 rounded-2xl bg-red-500/20 border border-red-500/30 flex items-center justify-center mx-auto">
             <AlertTriangle className="w-8 h-8 text-red-400" />
@@ -44,7 +44,7 @@ export default function GlobalError({
             <Link
               href="/"
               className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium"
-              style={{ background: "linear-gradient(135deg, #00f5ff, #b400ff)", color: "#03050a" }}
+              style={{ background: "linear-gradient(135deg, #c8f2ff, #d9d2ff)", color: "#0b1324" }}
             >
               Go Home
             </Link>

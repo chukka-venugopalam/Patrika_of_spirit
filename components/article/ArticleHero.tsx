@@ -47,7 +47,7 @@ export function ArticleHero({ post }: ArticleHeroProps) {
         <div
           className="absolute inset-0"
           style={{
-            background: `linear-gradient(135deg, ${post.categories?.color}22 0%, #03050a 100%)`,
+            background: `linear-gradient(135deg, ${post.categories?.color ?? "#bcecff"}22 0%, rgba(11, 19, 36, 0.98) 100%)`,
           }}
         />
       )}

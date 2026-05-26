@@ -29,7 +29,7 @@ export function ParticleBackground() {
       color: string;
     }
 
-    const COLORS = ["#00f5ff", "#b400ff", "#00ff88", "#ffffff"];
+    const COLORS = ["#bcecff", "#d9d2ff", "#d4f4e5", "#ffffff"];
     const particles: Particle[] = [];
     const COUNT = 80;
 
@@ -50,7 +50,7 @@ export function ParticleBackground() {
       ctx.beginPath();
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(b.x, b.y);
-      ctx.strokeStyle = `rgba(0, 245, 255, ${alpha})`;
+      ctx.strokeStyle = `rgba(188, 236, 255, ${alpha})`;
       ctx.lineWidth = 0.5;
       ctx.stroke();
     };
