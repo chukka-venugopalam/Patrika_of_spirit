@@ -1,4 +1,4 @@
-##Awareness Network Platform
+## Awareness Network Platform
 
 An interactive awareness ecosystem built with Next.js, Supabase, and modern web technologies.
 
